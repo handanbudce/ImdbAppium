@@ -14,14 +14,17 @@ public class BasePage {
 
     protected AndroidDriver driver;
     protected WebDriverWait wait;
+    protected WebDriverWait waitReduced;
     protected TouchAction action;
 
     public BasePage(AndroidDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(driver, 20);
+        waitReduced = new WebDriverWait(driver, 1);
     }
 
     public void click(By by){
+        wait.until(ExpectedConditions.elementToBeClickable(by));
         wait.until(ExpectedConditions.elementToBeClickable(by)).click();
     }
 
@@ -45,7 +48,7 @@ public class BasePage {
         Dimension dimension = driver.manage().window().getSize();
         int scrollStart = (int) (dimension.getHeight() * 0.5);
         int scrollEnd = (int) (dimension.getHeight() * 0.2);
-        driver.swipe(0,scrollStart, 0, scrollEnd, 2000);
+        driver.swipe(0,scrollStart, 0, scrollEnd, 2500);
     }
 
 }

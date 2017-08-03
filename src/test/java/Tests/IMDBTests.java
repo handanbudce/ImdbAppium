@@ -17,8 +17,7 @@ public class IMDBTests extends BaseTest{
         //E.A: Assertion fails if text won't split because otherwise the space
         //between the title and date are not equal.
         //We might warn IMDb about that :)
-        System.out.println("Titri:" + movieTitle.split(" ")[0]);
-        Assert.assertEquals(true,true);
+        Assert.assertTrue(watchList.getTitle().contains(movieTitle.split(" ")[0]));
     }
 
     @Test
@@ -39,7 +38,7 @@ public class IMDBTests extends BaseTest{
         customMessage.enterCustomMessage(checkInText);
         home = movieDetail.goToHomepage();
         checkIns =  home.goToCheckIns();
-        Assert.assertTrue(checkIns.customMessage().contains("Brilliant! Just brilliant!"));
+        Assert.assertTrue(checkIns.customMessage().contains("Brilliant"));
     }
 
 }

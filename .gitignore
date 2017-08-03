@@ -37,3 +37,4 @@ buildNumber.properties
 debug.log
 
 debug.xml
+src/main/resources/

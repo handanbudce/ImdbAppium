@@ -2,6 +2,7 @@ package Pages;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage{
 
@@ -15,12 +16,22 @@ public class HomePage extends BasePage{
     }
 
     public CheckInsPage goToCheckIns(){
-        swipeDown();
-        swipeDown();
-        swipeDown();
-        swipeDown();
+
+        while (!checkCheckIns()){
+            swipeDown();
+        }
         click(By.name("Your Check-Ins"));
         return new CheckInsPage(driver);
     }
+
+    private Boolean checkCheckIns(){
+        try{
+            waitReduced.until(ExpectedConditions.visibilityOfElementLocated(By.name("Your Check-Ins")));
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
 
 }
