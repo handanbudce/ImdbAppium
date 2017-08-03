@@ -5,8 +5,6 @@ import org.testng.annotations.Test;
 
 public class IMDBTests extends BaseTest{
 
-    String checkInText = "Brilliant! Just brilliant!";
-
     @Test
     public void addToWatchlist(){
         searchList = myAccount.searchMovie("The Mirror");
@@ -35,6 +33,7 @@ public class IMDBTests extends BaseTest{
         searchList = myAccount.searchMovie("Dunkirk");
         movieDetail = searchList.clickOnFirstResult();
         customMessage = movieDetail.checkIn();
+        String checkInText = "Brilliant! Just brilliant!";
         customMessage.enterCustomMessage(checkInText);
         home = movieDetail.goToHomepage();
         checkIns =  home.goToCheckIns();
